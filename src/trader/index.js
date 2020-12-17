@@ -45,7 +45,7 @@ class Trader extends Runner {
     }
 
     async onTick(tick) {
-        const time = tick.time ? new Date(tick.time) : new Date(); 
+        const time = tick.time ? new Date(tick.time) : new Date();
         const price = parseFloat(tick.price);
         const volume = parseFloat(tick.last_size);
 
@@ -63,7 +63,7 @@ class Trader extends Runner {
             const sticks = this.history.slice();
             sticks.push(this.currentCandle);
 
-            await this.strategy.run({ sticks, time });
+            await this.strategy.run({ sticks, time, strategyConfig: this.strategyConfig });
 
             if (this.currentCandle.state === 'closed') {
                 const candle = this.currentCandle;

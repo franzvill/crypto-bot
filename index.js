@@ -3,17 +3,18 @@ const Trader = require('./src/trader');
 const config = require('./src/config');
 
 const main = async () => {
+    let strategyConfig = {
+        shortPeriod: 5,
+        longPeriod: 18,
+        signalPeriod: 9,
+        boundary: 0.00001,
+        priceThreshold: 1.05
+    };
+    config.strategyConfig = strategyConfig;
     if (config.type === 'trader') {
         const trader = new Trader(config);
         await trader.start();
     } else {
-        let strategyConfig = {
-            shortPeriod: 5,
-            longPeriod: 18,
-            signalPeriod: 9,
-            boundary: 0.00001,
-            priceThreshold: 1.05
-        };
         const profit = await testConfiguration(strategyConfig);
         console.log(profit);
     }
