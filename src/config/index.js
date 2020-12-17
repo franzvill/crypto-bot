@@ -1,7 +1,7 @@
 module.exports = {
     product: 'XRP-EUR',
-    interval: 300,
-    start: '2020-12-01',
+    interval: 60,
+    start: '2020-12-16',
     end: new Date(),
     strategyType: 'macd',
     live: false,

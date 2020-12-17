@@ -68,6 +68,7 @@ class Trader extends Runner {
             if (this.currentCandle.state === 'closed') {
                 const candle = this.currentCandle;
                 this.currentCandle = null;
+                this.history = this.history.splice(1, this.history.length - 1);
                 this.history.push(candle);
                 this.printPositions();
                 this.printProfit();
@@ -75,7 +76,6 @@ class Trader extends Runner {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     onError(error) {
